@@ -6,6 +6,6 @@ def call(Map config) {
         sh "docker pull ${config.imageName}"
         sh "docker ps -a --filter 'name=${config.containerName}' -q | xargs -r docker stop"
         sh "docker ps -a --filter 'name=${config.containerName}' -q | xargs -r docker rm"
-        sh "docker run -d --name ${config.containerName} -p ${config.port}:3000 ${config.imageName}"
+        sh "docker run -d --name ${config.containerName} -p ${config.port}:80 ${config.imageName}"
     }
 }
